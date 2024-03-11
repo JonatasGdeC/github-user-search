@@ -1,5 +1,5 @@
 <script>
-// import './CardUser.scss'
+
 </script>
 
 <template>
@@ -51,10 +51,18 @@
 </template>
 
 <style>
-    .card{
+aside{
+    img{
+        border-radius: 100%;
+    }
+}
+
+.card{
     display: flex;
     gap: 38px;
     padding: 48px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
 
     .header{
         display: flex;
@@ -76,6 +84,7 @@
         font-size: 16px;
         font-weight: 400;
         margin: 2px 0 20px;
+        color: #0079FF;
     }
 
     .description{
@@ -91,6 +100,7 @@
         justify-content: space-between;
         padding: 15px 32px;
         margin-bottom: 38px;
+        border-radius: 10px;
 
         li{
             display: flex;
@@ -121,6 +131,19 @@
             align-items: center;
             gap: 20px;
         }
+    }
+}
+
+.dark-card{
+    background-color: #1E2A47;
+    color: #fff;
+
+    .description{
+        color: #fff;
+    }
+
+    ul{
+        background-color: #141D2F;
     }
 }
 </style>

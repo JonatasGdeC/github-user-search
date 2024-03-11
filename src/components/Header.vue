@@ -1,12 +1,18 @@
-<script setup>
-// import './Header.scss'
+<script>
+    export default {
+    methods: {
+        toggleTheme() {
+            this.$emit('toggle-theme');
+        }
+    }
+}
 </script>
 
 <template>
-    <header class="header">
+    <header class="header" :class="{'modoDark' : modoDark}">
         <div class="header__top">
             <h1>devfinder</h1>
-            <div>
+            <div @click="toggleTheme">
                 <p>dark</p>
                 <img src="../assets/images/moon.svg" alt="">
             </div>
@@ -26,7 +32,7 @@ header{
     display: flex;
     flex-direction: column;
     gap: 36px;
-    margin: 20px 0 24px;
+    padding: 20px 0 24px;
 
     .header__top{
         display: flex;
@@ -83,6 +89,17 @@ header{
             &:hover{
                 opacity: 0.7;
             }
+        }
+    }
+}
+
+.dark-header{
+    color: #fff;
+    .header__search{
+        background-color: #1E2A47;
+
+        input{
+            background-color: #1E2A47;
         }
     }
 }
