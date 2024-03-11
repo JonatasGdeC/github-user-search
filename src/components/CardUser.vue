@@ -1,5 +1,5 @@
 <script>
-import './CardUser.scss'
+// import './CardUser.scss'
 </script>
 
 <template>
@@ -49,3 +49,78 @@ import './CardUser.scss'
         </div>
     </div>
 </template>
+
+<style>
+    .card{
+    display: flex;
+    gap: 38px;
+    padding: 48px;
+
+    .header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h2{
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        p{
+            font-size: 15px;
+            font-weight: 400;
+        }
+    }
+
+    .username{
+        font-size: 16px;
+        font-weight: 400;
+        margin: 2px 0 20px;
+    }
+
+    .description{
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 25px;
+        margin-bottom: 32px;
+        color: #4B6A9B;
+    }
+
+    ul{
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 32px;
+        margin-bottom: 38px;
+
+        li{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            .info{
+                font-size: 13px;
+                font-weight: 400;
+                color: #4B6A9B;
+            }
+
+            .number{
+                font-size: 22px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .moreInfos{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 32px;
+        row-gap: 15px;
+
+        div{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+    }
+}
+</style>
