@@ -5,7 +5,8 @@ import axios from 'axios';
         data() {
             return {
                 darkMode: false,
-                username: ''
+                username: '',
+                errorSearch: false
             };
         },
         methods: {
@@ -14,11 +15,13 @@ import axios from 'axios';
                 this.darkMode = !this.darkMode;
             },
             async buscarUsuario() {
+                this.errorSearch = false
                 try {
                     const response = await axios.get(`https://api.github.com/users/${this.username}`);
                     this.$emit('usuario-encontrado', response.data);
+                    this.username = ''
                 } catch (error) {
-                    console.error('Erro ao buscar usuário:', error);
+                    this.errorSearch = true
                 }
             }
         }
@@ -41,6 +44,7 @@ import axios from 'axios';
                 <img src="../assets/images/icon-search.svg"  alt="">
             </label>
             <input type="text" v-model="username" id="search" placeholder="Search GitHub username">
+            <p :style="{display: errorSearch ? 'block' : 'none'}">No results</p>
             <button @click="buscarUsuario">Search</button>
         </div>
     </header>
@@ -94,6 +98,18 @@ header{
             border: none;
             width: 100%;
             margin: 0 25px;
+            font-size: 18px;
+            font-weight: 400;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        p{
+            color: red;
+            margin: 0 24px;
+            white-space: nowrap;
         }
 
         button{
@@ -121,6 +137,11 @@ header{
 
         input{
             background-color: #1E2A47;
+            color: #fff;
+
+            &::placeholder{
+                color: #fff;
+            }
         }
     }
 }

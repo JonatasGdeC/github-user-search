@@ -2,8 +2,19 @@
 export default {
     props: {
         usuario: Object
+    },
+    methods:{
+        formatarData(dataString) {
+            const meses = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+            const data = new Date(dataString);
+            const dia = data.getDate();
+            const mes = meses[data.getMonth()];
+            const ano = data.getFullYear();
+            return `Joined ${dia} ${mes} ${ano}`;
+        }
     }
 }
+
 </script>
 
 <template>
@@ -14,7 +25,7 @@ export default {
         <div>
             <div class="header">
                 <h2>{{ usuario.name }}</h2>
-                <p>Joined 5 Jan 2011</p>
+                <p>{{formatarData(usuario.created_at)}}</p>
             </div>
             <p class="username">{{ usuario.login }}</p>
             <p class="description">{{ usuario.bio }}</p>
@@ -35,19 +46,19 @@ export default {
             <div class="moreInfos">
                 <div>
                     <img src="../assets/images/location.svg" alt="">
-                    <p>{{ usuario.location }}</p>
+                    <p>{{ usuario.location ? usuario.location : 'Not Available' }}</p>
                 </div>
                 <div>
                     <img src="../assets/images/twiter.svg" alt="">
-                    <p>{{ twitter_username }}</p>
+                    <p>{{ twitter_username ? twitter_username : 'Not Available' }}</p>
                 </div>
                 <div>
                     <img src="../assets/images/copy.svg" alt="">
-                    <p>{{ usuario.html_url }}</p>
+                    <a :href='usuario.html_url'>https://github.blog</a>
                 </div>
                 <div>
                     <img src="../assets/images/companye.svg" alt="">
-                    <p>{{ usuario.company }}</p>
+                    <p>{{ usuario.company ? usuario.company : 'Not Available' }}</p>
                 </div>
             </div>
         </div>
@@ -137,6 +148,11 @@ aside{
             display: flex;
             align-items: center;
             gap: 20px;
+
+            a{
+                color: #fff;
+                text-decoration: underline;
+            }
         }
     }
 }
