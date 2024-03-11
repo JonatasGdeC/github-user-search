@@ -63,6 +63,7 @@ aside{
     padding: 48px;
     border-radius: 15px;
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    transition: all ease 0.7s;
 
     .header{
         display: flex;

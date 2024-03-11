@@ -24,7 +24,7 @@ export default {
 <template>
   <body :class="{ 'dark-mode': darkMode }">
     <div class="container">
-      <Header @toggle-theme="toggleTheme" :class="{ 'dark-header': darkMode }"/>
+      <Header @toggle-theme="toggleTheme" :class="{ 'dark-header': darkMode }" />
       <CardUser :class="{ 'dark-card': darkMode }" />
     </div>
   </body>

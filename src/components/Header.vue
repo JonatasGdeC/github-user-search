@@ -1,25 +1,33 @@
 <script>
     export default {
-    methods: {
-        toggleTheme() {
-            this.$emit('toggle-theme');
+        data() {
+            return {
+                darkMode: false
+            };
+        },
+        methods: {
+            toggleTheme() {
+                this.$emit('toggle-theme');
+                this.darkMode = !this.darkMode;
+            }
         }
-    }
 }
 </script>
 
 <template>
-    <header class="header" :class="{'modoDark' : modoDark}">
+    <header class="header" >
         <div class="header__top">
             <h1>devfinder</h1>
             <div @click="toggleTheme">
-                <p>dark</p>
-                <img src="../assets/images/moon.svg" alt="">
+                <p :style="{ display: darkMode ? 'none' : 'block' }">dark</p>
+                <img src="../assets/images/moon.svg" :style="{ display: darkMode ? 'none' : 'block' }" alt="Thema">
+                <p :style="{ display: darkMode ? 'block' : 'none' }">light</p>
+                <img src="../assets/images/sun.svg" :style="{ display: darkMode ? 'block' : 'none' }" alt="Thema">
             </div>
         </div>
         <div class="header__search">
             <label for="search">
-                <img src="../assets/images/icon-search.svg" alt="">
+                <img src="../assets/images/icon-search.svg"  alt="">
             </label>
             <input type="text" id="search" placeholder="Search GitHub username">
             <button>Search</button>
@@ -33,6 +41,7 @@ header{
     flex-direction: column;
     gap: 36px;
     padding: 20px 0 24px;
+    transition: all ease 0.7s;
 
     .header__top{
         display: flex;
@@ -54,6 +63,7 @@ header{
             p{
                 font-size: 16px;
                 font-weight: bold;
+                text-transform: uppercase;
             }
 
             &:hover{
