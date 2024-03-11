@@ -1,14 +1,25 @@
 <script>
+import axios from 'axios';
+
     export default {
         data() {
             return {
-                darkMode: false
+                darkMode: false,
+                username: ''
             };
         },
         methods: {
             toggleTheme() {
                 this.$emit('toggle-theme');
                 this.darkMode = !this.darkMode;
+            },
+            async buscarUsuario() {
+                try {
+                    const response = await axios.get(`https://api.github.com/users/${this.username}`);
+                    this.$emit('usuario-encontrado', response.data);
+                } catch (error) {
+                    console.error('Erro ao buscar usuário:', error);
+                }
             }
         }
 }
@@ -29,8 +40,8 @@
             <label for="search">
                 <img src="../assets/images/icon-search.svg"  alt="">
             </label>
-            <input type="text" id="search" placeholder="Search GitHub username">
-            <button>Search</button>
+            <input type="text" v-model="username" id="search" placeholder="Search GitHub username">
+            <button @click="buscarUsuario">Search</button>
         </div>
     </header>
 </template>

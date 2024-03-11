@@ -10,12 +10,16 @@ export default {
   },
   data() {
     return {
-      darkMode: false
+      darkMode: false,
+      usuario: null
     };
   },
   methods: {
     toggleTheme() {
       this.darkMode = !this.darkMode;
+    },
+    atualizarUsuario(usuario) {
+      this.usuario = usuario;
     }
   }
 }
@@ -24,8 +28,8 @@ export default {
 <template>
   <body :class="{ 'dark-mode': darkMode }">
     <div class="container">
-      <Header @toggle-theme="toggleTheme" :class="{ 'dark-header': darkMode }" />
-      <CardUser :class="{ 'dark-card': darkMode }" />
+      <Header @toggle-theme="toggleTheme" @usuario-encontrado="atualizarUsuario" :class="{ 'dark-header': darkMode }" />
+      <CardUser :class="{ 'dark-card': darkMode }" :usuario="usuario" />
     </div>
   </body>
 </template>

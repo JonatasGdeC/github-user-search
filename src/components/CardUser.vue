@@ -1,49 +1,53 @@
 <script>
-
+export default {
+    props: {
+        usuario: Object
+    }
+}
 </script>
 
 <template>
-    <div class="card">
+    <div class="card" v-if="usuario">
         <aside>
-            <img src="../assets/images/img-cat.png" alt="">
+            <img :src='usuario.avatar_url' alt="">
         </aside>
         <div>
             <div class="header">
-                <h2>The Octocat</h2>
+                <h2>{{ usuario.name }}</h2>
                 <p>Joined 5 Jan 2011</p>
             </div>
-            <p class="username">@octocat</p>
-            <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus maxime, beatae laboriosam libero unde necessitatibus rerum ipsa doloribus molestiae laborum perspiciatis veritatis dolorum repudiandae recusandae iusto corrupti culpa, iure nulla.</p>
+            <p class="username">{{ usuario.login }}</p>
+            <p class="description">{{ usuario.bio }}</p>
             <ul>
                 <li>
                     <p class="info">Repos</p>
-                    <p class="number">8</p>
+                    <p class="number">{{ usuario.public_repos }}</p>
                 </li>
                 <li>
                     <p class="info">Followers</p>
-                    <p class="number">3938</p>
+                    <p class="number">{{ usuario.followers }}</p>
                 </li>
                 <li>
                     <p class="info">Following</p>
-                    <p class="number">9</p>
+                    <p class="number">{{ usuario.following }}</p>
                 </li>
             </ul>
             <div class="moreInfos">
                 <div>
                     <img src="../assets/images/location.svg" alt="">
-                    <p>San Francisco</p>
+                    <p>{{ usuario.location }}</p>
                 </div>
                 <div>
                     <img src="../assets/images/twiter.svg" alt="">
-                    <p>Not Available</p>
+                    <p>{{ twitter_username }}</p>
                 </div>
                 <div>
                     <img src="../assets/images/copy.svg" alt="">
-                    <p>https://github.blog</p>
+                    <p>{{ usuario.html_url }}</p>
                 </div>
                 <div>
                     <img src="../assets/images/companye.svg" alt="">
-                    <p>@github</p>
+                    <p>{{ usuario.company }}</p>
                 </div>
             </div>
         </div>
@@ -53,6 +57,8 @@
 <style>
 aside{
     img{
+        width: 117px;
+        height: 117px; 
         border-radius: 100%;
     }
 }
