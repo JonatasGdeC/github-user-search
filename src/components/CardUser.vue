@@ -24,10 +24,16 @@ export default {
         </aside>
         <div>
             <div class="header">
-                <h2>{{ usuario.name }}</h2>
-                <p>{{formatarData(usuario.created_at)}}</p>
+                <img :src='usuario.avatar_url' alt="">
+                <div class="infos_user">
+                    <div>
+                        <h2>{{ usuario.name }}</h2>
+                        <p class="user_data_desktop">{{formatarData(usuario.created_at)}}</p>
+                    </div>
+                    <p class="username">{{ usuario.login }}</p>
+                    <p class="user_data_tablet">{{formatarData(usuario.created_at)}}</p>
+                </div>
             </div>
-            <p class="username">{{ usuario.login }}</p>
             <p class="description">{{ usuario.bio }}</p>
             <ul>
                 <li>
@@ -54,7 +60,7 @@ export default {
                 </div>
                 <div>
                     <img src="../assets/images/copy.svg" alt="">
-                    <a :href='usuario.html_url'>https://github.blog</a>
+                    <a :href='usuario.html_url' target="_blank">https://github.blog</a>
                 </div>
                 <div>
                     <img src="../assets/images/companye.svg" alt="">
@@ -71,6 +77,10 @@ aside{
         width: 117px;
         height: 117px; 
         border-radius: 100%;
+    }
+
+    @media(max-width: 1024px){
+        display: none;
     }
 }
 
@@ -96,12 +106,62 @@ aside{
             font-size: 15px;
             font-weight: 400;
         }
+
+        @media(max-width: 768px){
+            h2{
+                font-size: 16px;
+            }
+
+            p{
+                font-size: 13px;
+            }
+        }
+
+        .infos_user{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            width: 100%;
+
+            div{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                @media (max-width: 1024px) {
+                    .user_data_desktop{
+                        display: none;
+                    }
+                }
+            }
+
+            @media (min-width: 1024px) {
+                .user_data_tablet{
+                    display: none;
+                }
+            }
+        }
+
+        img{
+            width: 117px;
+            height: 117px; 
+            border-radius: 100%;
+            margin: 0 40px 24px 0;
+            
+            @media(min-width: 1024px){
+                display: none;
+            }
+
+            @media(max-width: 768px){
+                width: 70px;
+                height: 70px;
+            }
+        }
     }
 
     .username{
         font-size: 16px;
         font-weight: 400;
-        margin: 2px 0 20px;
         color: #0079FF;
     }
 
@@ -150,9 +210,43 @@ aside{
             gap: 20px;
 
             a{
-                color: #fff;
-                text-decoration: underline;
+                color: #4B6A9B;
+                &:hover{
+                    text-decoration: underline;
+                }
             }
+        }
+    }
+
+    @media(max-width: 768px){
+        padding: 32px 24px;
+        .username{
+            font-size: 13px;
+        }
+
+        .description{
+            font-size: 13px;
+        }
+
+        ul{
+            padding: 18px 16px;
+            margin-bottom: 24px;
+
+            li{
+                text-align: center;
+                .info{
+                    font-size: 11px;
+                }
+
+                .number{
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .moreInfos{
+            display: flex;
+            flex-direction: column;
         }
     }
 }
@@ -167,6 +261,14 @@ aside{
 
     ul{
         background-color: #141D2F;
+    }
+
+    .moreInfos{
+        div{
+            a{
+                color: #fff;
+            }
+        }
     }
 }
 </style>

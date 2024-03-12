@@ -40,7 +40,7 @@ import axios from 'axios';
             </div>
         </div>
         <div class="header__search">
-            <label for="search">
+            <label for="search" @click="errorSearch=false">
                 <img src="../assets/images/icon-search.svg"  alt="">
             </label>
             <input type="text" v-model="username" id="search" placeholder="Search GitHub username">
@@ -84,6 +84,10 @@ header{
             &:hover{
                 opacity: 1;
             }
+
+            @media(max-width: 1024px){
+                font-size: 13px;
+            }
         }
     }
 
@@ -93,6 +97,10 @@ header{
         padding: 24px 32px;
         border-radius: 15px;
         box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+
+        @media(max-width: 1024px){
+            padding: 10px;
+        }
 
         input{
             border: none;
@@ -104,12 +112,23 @@ header{
             &:focus {
                 outline: none;
             }
+
+            @media(max-width: 768px){
+                font-size: 13px;
+                margin: 0 9px;
+            }
         }
 
         p{
             color: red;
             margin: 0 24px;
             white-space: nowrap;
+
+            @media (max-width: 768px) {
+                margin: 0 6px;
+                font-size: 8px;
+                display: inline-block;
+            }
         }
 
         button{
@@ -125,6 +144,10 @@ header{
 
             &:hover{
                 opacity: 0.7;
+            }
+
+            @media(max-width: 768px){
+                font-size: 14px;
             }
         }
     }
