@@ -11,6 +11,17 @@ export default {
             const mes = meses[data.getMonth()];
             const ano = data.getFullYear();
             return `Joined ${dia} ${mes} ${ano}`;
+        },
+
+        copiarLink(link){   
+            let inputElement = document.createElement("input");
+            inputElement.value = link;
+            document.body.appendChild(inputElement);
+            inputElement.select();
+            document.execCommand("copy");
+            document.body.removeChild(inputElement);
+            
+            alert("Link copiado para a área de transferência!");
         }
     }
 }
@@ -59,7 +70,7 @@ export default {
                     <p>{{ twitter_username ? twitter_username : 'Not Available' }}</p>
                 </div>
                 <div>
-                    <img src="../assets/images/copy.svg" alt="">
+                    <img src="../assets/images/copy.svg" alt="Copiar link" @click="copiarLink(usuario.html_url)" style="cursor: pointer;">
                     <a :href='usuario.html_url' target="_blank">https://github.blog</a>
                 </div>
                 <div>
