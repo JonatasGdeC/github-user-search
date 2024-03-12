@@ -20,8 +20,6 @@ export default {
             inputElement.select();
             document.execCommand("copy");
             document.body.removeChild(inputElement);
-            
-            alert("Link copiado para a área de transferência!");
         }
     }
 }
